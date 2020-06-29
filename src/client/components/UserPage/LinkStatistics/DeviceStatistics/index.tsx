@@ -1,11 +1,10 @@
 import React from 'react'
-import Typography from '@material-ui/core/Typography'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 
-import { DeviceClicksInterface } from '../../../../shared/interfaces/link-statistics'
+import { DeviceClicksInterface } from '../../../../../shared/interfaces/link-statistics'
 import FlexibleBar from './widgets/FlexibleBar'
 import DeviceLegend from './widgets/DeviceLegend'
-import Divider from '@material-ui/core/Divider'
+import Statistic from '../Statistic'
 
 export type ProcessedStatistic = {
   label: string
@@ -39,20 +38,6 @@ function getFormattedPercent(count: number, total: number): number {
 }
 
 const useStyles = makeStyles(() => ({
-  root: {
-    border: 'solid 1px #CDDCE0',
-    borderRadius: 3,
-    paddingTop: 48,
-    paddingBottom: 60,
-    paddingLeft: 40,
-    paddingRight: 40,
-  },
-  divider: {
-    marginTop: 23,
-    marginBottom: 32,
-    marginLeft: -40,
-    marginRight: -40,
-  },
   devicesRoot: {
     display: 'flex',
     height: 30,
@@ -84,11 +69,7 @@ export default function DeviceStatistics(props: DeviceStatisticsProps) {
     .reduce((x, y) => x + y, 0)
 
   return (
-    <div className={classes.root}>
-      <Typography color="primary" variant="h4">
-        What devices are your users on?
-      </Typography>
-      <Divider className={classes.divider} />
+    <Statistic title="What devices are your users on?">
       <div className={classes.devicesRoot}>
         {deviceClicks.map((clicks) => (
           <FlexibleBar {...clicks} />
@@ -107,6 +88,6 @@ export default function DeviceStatistics(props: DeviceStatisticsProps) {
           )
         })}
       </div>
-    </div>
+    </Statistic>
   )
 }
