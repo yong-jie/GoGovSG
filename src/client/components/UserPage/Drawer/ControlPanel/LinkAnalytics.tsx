@@ -1,8 +1,7 @@
 import React from 'react'
-import i18next from 'i18next'
-import { Typography, createStyles, makeStyles, Button } from '@material-ui/core'
+import { Typography, createStyles, makeStyles } from '@material-ui/core'
 
-import analyticSoonGraphic from './assets/drawer-analytics-soon.svg'
+import LinkStatistics from '../../LinkStatistics'
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -22,23 +21,21 @@ const useStyles = makeStyles((theme) =>
     linkAnalyticsDiv: {
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center',
       marginBottom: '141px',
     },
     linkAnalyticsText: {
       marginTop: 20,
-      marginBottom: 38,
+      marginBottom: 20,
       textAlign: 'center',
     },
     titleText: {
-      textAlign: 'center',
+      marginBottom: 10,
     },
-    linkAnalysticsImage: {
-      width: '50%',
+    subtitleText: {
+      marginBottom: 20,
     },
     feedbackButton: {
       height: 44,
-      marginTop: 30,
       width: '100%',
       maxWidth: '100%',
       [theme.breakpoints.up('md')]: {
@@ -54,28 +51,16 @@ export default function LinkAnalytics() {
   return (
     <div className={classes.linkAnalyticsDiv}>
       <Typography className={classes.titleText} variant="h3" color="primary">
-        Link click history coming soon!
+        Click history
       </Typography>
-      <Typography className={classes.linkAnalyticsText} variant="body1">
-        Share your feedback about other enhancements you would like to see in
-        Go.gov.sg.
-      </Typography>
-      <img
-        className={classes.linkAnalysticsImage}
-        src={analyticSoonGraphic}
-        alt="Link analytics coming soon!"
-        draggable={false}
-      />
-      <Button
-        className={classes.feedbackButton}
-        variant="contained"
+      <Typography
+        className={classes.subtitleText}
+        variant="body1"
         color="primary"
-        size="large"
-        href={i18next.t('general.links.contact')}
-        target="_blank"
       >
-        Share your feedback
-      </Button>
+        View real-time analytics of your link, and sort by time period.
+      </Typography>
+      <LinkStatistics />
     </div>
   )
 }
