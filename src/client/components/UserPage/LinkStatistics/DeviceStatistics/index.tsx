@@ -72,7 +72,7 @@ export default function DeviceStatistics(props: DeviceStatisticsProps) {
     <Statistic title="What devices are your users on?">
       <div className={classes.devicesRoot}>
         {deviceClicks.map((clicks) => (
-          <FlexibleBar {...clicks} />
+          <FlexibleBar key={clicks.label} {...clicks} />
         ))}
       </div>
       <div className={classes.legendRoot}>
@@ -80,6 +80,7 @@ export default function DeviceStatistics(props: DeviceStatisticsProps) {
           const percent = getFormattedPercent(clicks.count, totalClicks)
           return (
             <DeviceLegend
+              key={clicks.label}
               className={classes.legend}
               percent={percent}
               dotColor={clicks.color}

@@ -3,6 +3,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles'
 
 import { LinkStatisticsInterface } from '../../../../shared/interfaces/link-statistics'
 import DeviceStatistics from './DeviceStatistics'
+import DailyStatistics from './DailyStatistics'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -21,6 +22,7 @@ export default function Statistics(props: StatisticsProps) {
   return (
     <div className={classes.root}>
       <DeviceStatistics deviceClicks={props.data.deviceClicks} />
+      <DailyStatistics dailyClicks={props.data.dailyClicks} />
     </div>
   )
 }

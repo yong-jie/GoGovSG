@@ -11,6 +11,10 @@ const useStyles = makeStyles(() => ({
     paddingBottom: 60,
     paddingLeft: 40,
     paddingRight: 40,
+    marginBottom: 10,
+    '&last-child': {
+      marginBottom: 0,
+    },
   },
   divider: {
     marginTop: 23,
