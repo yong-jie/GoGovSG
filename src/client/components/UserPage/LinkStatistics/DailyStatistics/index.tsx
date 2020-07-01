@@ -21,6 +21,7 @@ export function processData(data: DailyClicksInterface[]) {
       backgroundColor: '#456682',
       borderColor: '#456682',
       pointColor: '#456682',
+      pointHitRadius: 20,
       pointStrokeColor: '#456682',
       pointRadius: 0,
       pointHoverRadius: 5,
@@ -45,7 +46,7 @@ export default function DailyStatistics(props: DailyStatisticsProps) {
                   display: false,
                 },
                 ticks: {
-                  padding: 5,
+                  padding: 8,
                 },
               },
             ],
@@ -58,8 +59,24 @@ export default function DailyStatistics(props: DailyStatisticsProps) {
             ],
           },
           tooltips: {
-            xPadding: 10,
+            callbacks: {
+              title: (tooltipItems, data) => {
+                const index = tooltipItems[0].index ?? 0
+                const label = data.labels?.[index].toString() ?? ''
+                const fullDate = moment(label, 'D MMM').format('DD MMMM yyyy')
+                return fullDate.toString()
+              },
+              label: (tooltipItem) => {
+                const label = tooltipItem.yLabel
+                return `${label} clicks`
+              },
+            },
+            xPadding: 20,
             yPadding: 10,
+            titleFontSize: 14,
+            bodyFontSize: 14,
+            backgroundColor: '#384A51',
+            displayColors: false,
           },
         }}
       ></Line>
