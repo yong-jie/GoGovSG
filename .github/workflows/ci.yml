@@ -71,7 +71,7 @@ jobs:
     outputs:
       proceed: ${{ steps.determine_proceed.outputs.proceed }}
     runs-on: ubuntu-18.04
-    if: github.event == 'push'
+    if: github.event_name == 'push'
     steps:
       - shell: python
         id: determine_proceed
