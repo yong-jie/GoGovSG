@@ -14,3 +14,6 @@ jobs:
       - shell: bash
         run: 'echo $CREDENTIALS > credentials.json && 
               echo $TOKEN > token.json'
+        env:
+          CREDENTIALS: ${{ secrets.RELEASE_CHECKLIST_CREDENTIALS }}
+          TOKEN: ${{ secrets.RELEASE_CHECKLIST_TOKEN }}
