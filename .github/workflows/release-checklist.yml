@@ -1,0 +1,16 @@
+name: release-checklist
+on:
+  workflow_dispatch:
+    inputs:
+      email:
+        description: 'Email used to authenticate. (Add your CREDENTIALS to github secrets)'
+        required: true
+jobs:
+  release-checklist:
+    name: Release Checklist
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - shell: bash
+        run: 'echo $CREDENTIALS > credentials.json && 
+              echo $TOKEN > token.json'
